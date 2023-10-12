@@ -1,0 +1,45 @@
+* {
+    font-family: Tahoma;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+}
+
+#ui-panel {
+    display: block;
+    background-color: lightslategrey;
+    width: 500px;
+    padding: 10px 10px 5px 10px;;
+    border-radius: 5px;
+}
+
+#display {
+    height: 120px;
+    background-color: gainsboro;
+    flex: 1;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 5px;;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 5px;;
+}
+
+button {
+    height: 80px;
+    flex: 1;
+    font-size: x-large;
+    border: none;
+    border-radius: 5px;
+}
