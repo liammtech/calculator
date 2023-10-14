@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="main.css" rel="stylesheet" type="text/css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
@@ -14,17 +14,17 @@
     <div id="container">
         <div id="ui-panel">
             <div id="display"></div>
-            <div class="row row-2">
+            <div class="row row-1">
                 <button class="column-1">%</button>
                 <button class="column-2">CE</button>
                 <button class="column-3">C</button>
                 <button class="column-4">DEL</button>
             </div>
-            <div class="row row-3">
-                <button class="column-1">1/x</button>
-                <button class="column-2">x&#178;</button>
-                <button class="column-3">&#8730;</button>
-                <button class="column-4">÷</button>
+            <div class="row row-2">
+                <button id="invert" class="column-1">1/x</button>
+                <button id="square" class="column-2">x&#178;</button>
+                <button id="square-root" class="column-3">&#8730;</button>
+                <button if="divide" class="column-4">÷</button>
             </div>
             <div class="row row-4">
                 <button class="column-1">7</button>

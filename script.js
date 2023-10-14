@@ -51,4 +51,10 @@ function operate(operator, thisNum, prevNum) {
     }
 }
 
-console.log(operate("negate", 5))
+const controls = document.querySelectorAll("button")
+controls.forEach((button) => {   
+    button.addEventListener('click', () => {
+        console.log(button.id)
+        operate(button.id, 30, 10);
+    });
+});
