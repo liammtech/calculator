@@ -1,17 +1,20 @@
-function add(num1, num2) {
-    return num1 + num2;
+var thisNum = new Number()
+var prevNum = new Number()
+
+function percentage(num1, num2) {
+    // To be completed
 }
 
-function subtract(num1, num2) {
-    return num1 - num2;
+function clearEntry(num1, num2) {
+    // To be completed
 }
 
-function multiply(num1, num2) {
-    return num1 * num2;
+function clear(num1, num2) {
+    // To be completed
 }
 
-function divide(num1, num2) {
-    return num1 / num2;
+function backspace(num1, num2) {
+    // To be completed
 }
 
 function invert(num1) {
@@ -26,8 +29,36 @@ function squareRoot(num1) {
     return Math.sqrt(num1);
 }
 
+function divide(num1, num2) {
+    return num1 / num2;
+}
+
+function multiply(num1, num2) {
+    return num1 * num2;
+}
+
+function subtract(num1, num2) {
+    return num1 - num2;
+}
+
+function add(num1, num2) {
+    return num1 + num2;
+}
+
 function negate(num1) {
     return -Math.abs(num1);
+}
+
+function decimal(num1) {
+    // To be completed
+}
+
+function equals(num1) {
+    // To be completed
+}
+
+function number(num1) {
+    // To be completed
 }
 
 function operate(operator, thisNum, prevNum) {
@@ -61,25 +92,25 @@ function operate(operator, thisNum, prevNum) {
         case "equals":
             return equals(thisNum);
         case "zero":
-            return zero(thisNum);
+            return number(thisNum);
         case "one":
-            return one(thisNum);
+            return number(thisNum);
         case "two":
-            return two(thisNum);
+            return number(thisNum);
         case "three":
-            return three(thisNum);
+            return number(thisNum);
         case "four":
-            return four(thisNum);
+            return number(thisNum);
         case "five":
-            return five(thisNum);
+            return number(thisNum);
         case "six":
-            return six(thisNum);
+            return number(thisNum);
         case "seven":
-            return seven(thisNum);
+            return number(thisNum);
         case "eight":
-            return eight(thisNum);
+            return number(thisNum);
         case "nine":
-            return nine(thisNum);
+            return number(thisNum);
     }
 }
 
