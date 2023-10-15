@@ -51,10 +51,14 @@ function operate(operator, thisNum, prevNum) {
     }
 }
 
-const controls = document.querySelectorAll("button")
-controls.forEach((button) => {   
-    button.addEventListener('click', () => {
-        console.log(button.id)
-        operate(button.id, 30, 10);
-    });
-});
+var uiPanel = document.querySelector("#ui-panel");
+uiPanel.addEventListener("click", inputResponse, false)
+
+function inputResponse(e) {
+    if (e.target !== e.currentTarget) {
+        var clickedItem = e.target.id;
+        alert(clickedItem);
+        return clickedItem;
+    }
+    e.stopPropagation;
+}
