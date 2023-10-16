@@ -1,20 +1,25 @@
-var thisNum = new Number()
-var prevNum = new Number()
+var thisNum = "";
+var prevNum = "";
+var thisOp = "";
+var numSwitch = false
 
 function percentage(num1, num2) {
     // To be completed
 }
 
 function clearEntry(num1, num2) {
-    // To be completed
+    thisNum = "";
 }
 
 function clear(num1, num2) {
-    // To be completed
+    thisNum = "";
+    prevNum = "";
+    thisOp = "";
 }
 
 function backspace(num1, num2) {
-    // To be completed
+    thisNum = thisNum.slice(0, -1);
+    console.log(thisNum);
 }
 
 function invert(num1) {
@@ -49,16 +54,19 @@ function negate(num1) {
     return -Math.abs(num1);
 }
 
-function decimal(num1) {
+function equals(num1, num2) {
     // To be completed
 }
 
-function equals(num1) {
-    // To be completed
-}
-
-function number(num1) {
-    // To be completed
+function numInput(num1) {
+    if (numSwitch) {
+        numSwitch = false;
+        prevNum = thisNum;
+        thisNum = "" + num1;
+    } else {
+        thisNum = "" + thisNum + num1;
+        console.log(thisNum);
+    }
 }
 
 function operate(operator, thisNum, prevNum) {
@@ -88,29 +96,29 @@ function operate(operator, thisNum, prevNum) {
         case "negate":
             return negate(thisNum);
         case "decimal":
-            return decimal(thisNum);
+            return numInput(".");
         case "equals":
             return equals(thisNum);
         case "zero":
-            return number(thisNum);
+            return numInput(0);
         case "one":
-            return number(thisNum);
+            return numInput(1);
         case "two":
-            return number(thisNum);
+            return numInput(2);
         case "three":
-            return number(thisNum);
+            return numInput(3);
         case "four":
-            return number(thisNum);
+            return numInput(4);
         case "five":
-            return number(thisNum);
+            return numInput(5);
         case "six":
-            return number(thisNum);
+            return numInput(6);
         case "seven":
-            return number(thisNum);
+            return numInput(7);
         case "eight":
-            return number(thisNum);
+            return numInput(8);
         case "nine":
-            return number(thisNum);
+            return numInput(9);
     }
 }
 
@@ -120,8 +128,7 @@ uiPanel.addEventListener("click", inputResponse, false)
 function inputResponse(e) {
     if (e.target !== e.currentTarget) {
         var clickedItem = e.target.id;
-        alert(clickedItem);
-        return clickedItem;
+        operate(clickedItem);
     }
     e.stopPropagation;
 }
