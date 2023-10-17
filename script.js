@@ -35,19 +35,23 @@ function squareRoot(num1) {
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    // return num1 / num2;
+    thisOp = "divide-sign";
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    // return num1 * num2;
+    thisOp = "multiply-sign"
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    // return num1 - num2;
+    thisOp = "subtract-sign"
 }
 
 function add(num1, num2) {
-    return num1 + num2;
+    // return num1 + num2;
+    thisOp = "plus-sign"
 }
 
 function negate(num1) {
@@ -56,6 +60,9 @@ function negate(num1) {
 
 function equals(num1, num2) {
     // To be completed
+    switch(thisOp) {
+
+    }
 }
 
 function numInput(num1) {
