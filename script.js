@@ -1,82 +1,124 @@
-var thisNum = "";
-var prevNum = "";
-var thisOp = "";
+var thisNum = 0;
+var prevNum = null;
+var thisOp = null;
 var numSwitch = false
 
-function percentage(num1, num2) {
+function percentage() {
     // To be completed
 }
 
-function clearEntry(num1, num2) {
+function clearEntry() {
     thisNum = "";
 }
 
-function clear(num1, num2) {
-    thisNum = "";
-    prevNum = "";
-    thisOp = "";
+function clear() {
+    thisNum = 0;
+    prevNum = null;
+    thisOp = null;
+    console.clear();
 }
 
-function backspace(num1, num2) {
+function backspace() {
     thisNum = thisNum.slice(0, -1);
     console.log(thisNum);
 }
 
-function invert(num1) {
-    return 1 / num1;
+function invert() {
+    thisNum = Number(thisNum);
+    return 1 / thisNum;
 }
 
-function square(num1) {
-    return num1 * num1;
+function square() {
+    thisNum = Number(thisNum);
+    result = thisNum * thisNum;
+    prevNum = thisNum;
+    thisNum = result;
+    return result;
 }
 
-function squareRoot(num1) {
-    return Math.sqrt(num1);
+function squareRoot() {
+    thisNum = Number(thisNum);
+    return Math.sqrt(thisNum);
 }
 
-function divide(num1, num2) {
+function divide() {
     // return num1 / num2;
+    numSwitch = true;
     thisOp = "divide-sign";
+    console.log(thisNum);
 }
 
-function multiply(num1, num2) {
+function multiply() {
     // return num1 * num2;
+    numSwitch = true;
     thisOp = "multiply-sign"
+    console.log(thisNum);
 }
 
-function subtract(num1, num2) {
+function subtract() {
     // return num1 - num2;
-    thisOp = "subtract-sign"
+    numSwitch = true;
+    thisOp = "subtract-sign";
+    console.log(thisNum);
 }
 
-function add(num1, num2) {
+function add() {
     // return num1 + num2;
-    thisOp = "plus-sign"
+    numSwitch = true;
+    thisOp = "plus-sign";
+    console.log(thisNum);
 }
 
 function negate(num1) {
-    return -Math.abs(num1);
+    thisNum = -Math.abs(num1);
+    console.log(thisNum);
 }
 
-function equals(num1, num2) {
+function equals() {
     // To be completed
+    let result = null;
+    thisNum = Number(thisNum);
+    prevNum = Number(prevNum);
     switch(thisOp) {
-
+        case "divide-sign":
+            result = prevNum / thisNum;
+            prevNum = thisNum;
+            thisNum = result;
+            return result;
+        case "multiply-sign":
+            result = prevNum * thisNum;
+            prevNum = thisNum;
+            thisNum = result;
+            return result;
+        case "subtract-sign":
+            result = prevNum - thisNum;
+            prevNum = thisNum;
+            thisNum = result;
+            return result;
+        case "plus-sign":
+            result = prevNum + thisNum;
+            prevNum = thisNum;
+            thisNum = result;
+            return result;
     }
 }
 
 function numInput(num1) {
+    if (thisNum === 0) {
+        thisNum = "";
+    }
     if (numSwitch) {
         numSwitch = false;
         prevNum = thisNum;
         thisNum = "" + num1;
+        console.log(thisNum);
     } else {
         thisNum = "" + thisNum + num1;
         console.log(thisNum);
     }
 }
 
-function operate(operator, thisNum, prevNum) {
+function operate(operator) {
     switch(operator) {
         case "percentage":
             return percentage();
@@ -107,6 +149,10 @@ function operate(operator, thisNum, prevNum) {
         case "equals":
             return equals(thisNum);
         case "zero":
+            if (thisNum === 0) {
+                console.log(thisNum);
+                return;
+            }
             return numInput(0);
         case "one":
             return numInput(1);
@@ -135,7 +181,9 @@ uiPanel.addEventListener("click", inputResponse, false)
 function inputResponse(e) {
     if (e.target !== e.currentTarget) {
         var clickedItem = e.target.id;
-        operate(clickedItem);
+        result = operate(clickedItem);
+
+        console.log(result);
     }
     e.stopPropagation;
 }
