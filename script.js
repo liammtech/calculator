@@ -14,6 +14,7 @@ function percentage() {
 
 function clearEntry() {
     thisNum = "";
+    displayUpdate(prevNum);
 }
 
 function clear() {
@@ -21,11 +22,13 @@ function clear() {
     prevNum = null;
     thisOp = null;
     console.clear();
+    displayUpdate(0);
 }
 
 function backspace() {
     thisNum = thisNum.slice(0, -1);
     console.log(thisNum);
+    displayUpdate(thisNum);
 }
 
 function invert() {
@@ -204,7 +207,14 @@ function inputResponse(e) {
         result = operate(clickedItem);
         if (result != undefined) {
             console.log(result);
+            displayUpdate(result);
         }
     }
     e.stopPropagation;
+}
+
+var display = document.querySelector("#display");
+
+function displayUpdate(num1) {
+    display.textContent = num1
 }
