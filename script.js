@@ -97,21 +97,33 @@ function equals() {
     switch(thisOp) {
         case "divide-sign":
             result = prevNum / thisNum;
+            if (result % 1 != 0) {
+                result = result.toFixed(6);
+            }
             prevNum = thisNum;
             thisNum = result;
             return result;
         case "multiply-sign":
             result = prevNum * thisNum;
+            if (result % 1 != 0) {
+                result = result.toFixed(6);
+            }
             prevNum = thisNum;
             thisNum = result;
             return result;
         case "subtract-sign":
             result = prevNum - thisNum;
+            if (result % 1 != 0) {
+                result = result.toFixed(6);
+            }
             prevNum = thisNum;
             thisNum = result;
             return result;
         case "plus-sign":
             result = prevNum + thisNum;
+            if (result % 1 != 0) {
+                result = result.toFixed(6);
+            }
             prevNum = thisNum;
             thisNum = result;
             return result;
@@ -216,5 +228,5 @@ function inputResponse(e) {
 var display = document.querySelector("#display");
 
 function displayUpdate(num1) {
-    display.textContent = num1
+    display.textContent = num1;
 }
