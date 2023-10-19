@@ -1,10 +1,15 @@
 var thisNum = 0;
 var prevNum = null;
 var thisOp = null;
-var numSwitch = false
+var numSwitch = false;
+var equalSwitch = false;
 
 function percentage() {
-    // To be completed
+    if (thisNum && prevNum) {
+        thisNum = thisNum / 100;
+    } else {
+        clear();
+    }
 }
 
 function clearEntry() {
@@ -24,11 +29,13 @@ function backspace() {
 }
 
 function invert() {
+    equalSwitch = true;
     thisNum = Number(thisNum);
     return 1 / thisNum;
 }
 
 function square() {
+    equalSwitch = true;
     thisNum = Number(thisNum);
     result = thisNum * thisNum;
     prevNum = thisNum;
@@ -37,36 +44,40 @@ function square() {
 }
 
 function squareRoot() {
+    equalSwitch = true;
     thisNum = Number(thisNum);
-    return Math.sqrt(thisNum);
+    result = Math.sqrt(thisNum);
+    prevNum = thisNum;
+    thisNum = result;
+    return result;
 }
 
 function divide() {
     // return num1 / num2;
     numSwitch = true;
     thisOp = "divide-sign";
-    console.log(thisNum);
+    console.log("÷");
 }
 
 function multiply() {
     // return num1 * num2;
     numSwitch = true;
     thisOp = "multiply-sign"
-    console.log(thisNum);
+    console.log("x");
 }
 
 function subtract() {
     // return num1 - num2;
     numSwitch = true;
     thisOp = "subtract-sign";
-    console.log(thisNum);
+    console.log("-");
 }
 
 function add() {
     // return num1 + num2;
     numSwitch = true;
     thisOp = "plus-sign";
-    console.log(thisNum);
+    console.log("+");
 }
 
 function negate(num1) {
@@ -76,6 +87,7 @@ function negate(num1) {
 
 function equals() {
     // To be completed
+    equalSwitch = true;
     let result = null;
     thisNum = Number(thisNum);
     prevNum = Number(prevNum);
@@ -104,17 +116,25 @@ function equals() {
 }
 
 function numInput(num1) {
-    if (thisNum === 0) {
+    if (num1 === ".") {
+        thisNum = "0"
+    }  else if (thisNum === 0) {
         thisNum = "";
     }
-    if (numSwitch) {
+    if (equalSwitch) {
+        equalSwitch = false;
         numSwitch = false;
         prevNum = thisNum;
         thisNum = "" + num1;
-        console.log(thisNum);
+        return thisNum;
+    } else if (numSwitch) {
+        numSwitch = false;
+        prevNum = thisNum;
+        thisNum = "" + num1;
+        return thisNum;
     } else {
         thisNum = "" + thisNum + num1;
-        console.log(thisNum);
+        return thisNum;
     }
 }
 
@@ -147,7 +167,7 @@ function operate(operator) {
         case "decimal":
             return numInput(".");
         case "equals":
-            return equals(thisNum);
+            return equals();
         case "zero":
             if (thisNum === 0) {
                 console.log(thisNum);
@@ -182,8 +202,9 @@ function inputResponse(e) {
     if (e.target !== e.currentTarget) {
         var clickedItem = e.target.id;
         result = operate(clickedItem);
-
-        console.log(result);
+        if (result != undefined) {
+            console.log(result);
+        }
     }
     e.stopPropagation;
 }
